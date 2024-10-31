@@ -14,4 +14,4 @@ class Note(models.Model):
 	instructor = models.CharField(max_length=30)
 	lectureNum = models.IntegerField() 
 	notes = models.TextField()
-	owner = models.ForeignKey('auth.user', related_name="notes", on_delete=models.CASCADE)
+	author = models.ForeignKey('auth.user', related_name="notes", on_delete=models.CASCADE)
