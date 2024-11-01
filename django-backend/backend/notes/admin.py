@@ -3,6 +3,6 @@ from .models import Note
 
 # Register your models here.
 class NoteAdmin(admin.ModelAdmin):
-	list_display = ('course', 'instructor', 'lectureNum', 'notes')
+	list_display = ('id', 'author', 'course', 'instructor', 'lectureNum', 'notes')
 
 admin.site.register(Note, NoteAdmin)
