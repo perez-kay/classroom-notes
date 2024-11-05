@@ -19,11 +19,11 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from notes import views
 
-router = DefaultRouter()
-router.register(r'notes', views.NoteViewSet, basename='note')
-router.register(r'users', views.UserViewSet, basename='user')
+# router = DefaultRouter()
+# router.register(r'notes', views.NoteViewSet, basename='note')
+# router.register(r'users', views.UserViewSet, basename='user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-	path('api/', include(router.urls))
+	# path('api/', include(router.urls))
 ]
