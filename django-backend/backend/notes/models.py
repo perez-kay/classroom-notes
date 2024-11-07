@@ -18,3 +18,6 @@ class Note(models.Model):
 	notes = models.TextField()
 	author = models.ForeignKey("students.Student", on_delete=models.CASCADE)
 	course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
+
+	def __str__(self):
+		return f"{self.title} by {self.author.user.username}"
