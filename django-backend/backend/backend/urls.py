@@ -19,10 +19,12 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from notes.views import NoteViewSet
 from students.views import StudentViewSet
+from subscriptions.views import SubscriptionViewSet
 
 router = DefaultRouter()
 router.register(r'notes', NoteViewSet, basename='note')
 router.register(r'students', StudentViewSet, basename='student')
+router.register(r'subscriptions', SubscriptionViewSet, basename='subscription')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
