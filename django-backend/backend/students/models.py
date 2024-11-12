@@ -8,7 +8,7 @@ class Student(models.Model):
 	user = models.OneToOneField(
 		User,
 		on_delete=models.CASCADE,
-		related_name='profile'
+		
 	)
 	major = models.CharField(max_length=30)
 	minor = models.CharField(max_length=30, blank=True)
@@ -19,8 +19,8 @@ class Student(models.Model):
 	def __str__(self):
 		return self.user.username
 	
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-	"""Create a new Student() object when a Django User is created."""
-	if created:
-		Student.objects.create(user=instance)
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+# 	"""Create a new Student() object when a Django User is created."""
+# 	if created:
+# 		Student.objects.create(user=instance)
