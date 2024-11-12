@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from notes import views
+from notes.views import NoteViewSet
+from students.views import StudentViewSet
 
-# router = DefaultRouter()
-# router.register(r'notes', views.NoteViewSet, basename='note')
-# router.register(r'users', views.UserViewSet, basename='user')
+router = DefaultRouter()
+router.register(r'notes', NoteViewSet, basename='note')
+router.register(r'students', StudentViewSet, basename='student')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-	# path('api/', include(router.urls))
+	path('api/', include(router.urls))
 ]
