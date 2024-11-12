@@ -6,11 +6,4 @@ class NoteSerializer(serializers.ModelSerializer):
 	author = serializers.ReadOnlyField(source='author.username')
 	class Meta:
 		model = Note
-		fields = ('id', 'author', 'course', 'notes', 'title')
-
-# class UserSerializer(serializers.ModelSerializer):
-# 	notes = serializers.PrimaryKeyRelatedField(many=True, queryset=Note.objects.all())
-
-# 	class Meta:
-# 		model = User
-# 		fields = ['id', 'username', 'notes']
+		fields = ('id', 'author', 'course', 'description', 'title')

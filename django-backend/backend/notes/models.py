@@ -15,9 +15,11 @@ class Note(models.Model):
 	# course = models.CharField(choices=COURSE_CHOICES, max_length=35)
 	# instructor = models.CharField(max_length=30)
 	title = models.CharField(max_length=50) 
-	notes = models.TextField()
-	author = models.ForeignKey("students.Student", on_delete=models.CASCADE)
+	description = models.TextField()
+	# file = models.FileField()
+	# author = models.ForeignKey("students.Student", on_delete=models.CASCADE, related_name='written_notes')
+	author = models.ForeignKey("auth.User", on_delete=models.CASCADE)
 	course = models.ForeignKey("courses.Course", on_delete=models.CASCADE)
 
 	def __str__(self):
-		return f"{self.title} by {self.author.user.username}"
+		return f"{self.title} by {self.author.username}"
