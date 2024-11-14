@@ -58,7 +58,7 @@ function NavBar() {
 
         <Nav.Item>
           <NavLink to="new-post" className="ps-3 py-2 d-block">
-            <i className="bi bi-pencil-square fs-5 pe-2"></i> Share a New Note
+            <i className="bi bi-pencil-square fs-5 pe-2"></i> Create a New Note
           </NavLink>
         </Nav.Item>
       </Nav>

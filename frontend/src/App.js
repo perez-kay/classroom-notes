@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import NoteFeed from './components/NoteFeed';
 import NavBar from './components/NavBar';
 import NoteDetails from './components/NoteDetails';
+import NewPost from './components/NewPost';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/profile" element={<h1>Profile</h1>} />
                 <Route path="/my-notes" element={<h1>My Notes</h1>} />
                 <Route path="/notes/:id" element={<NoteDetails />} />
+                <Route path="/new-post" element={<NewPost />} />
               </Routes>
             </Row>
           </Col>

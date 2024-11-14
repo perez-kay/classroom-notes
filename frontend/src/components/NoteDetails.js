@@ -27,7 +27,7 @@ function NoteDetails() {
       <Card.Body>
         <Card.Title>{note.course}</Card.Title>
         <Card.Subtitle className="text-muted">{note.title}</Card.Subtitle>
-        <p className="fs-6 text-muted mb-0">{note.author}</p>
+        {/* <p className="fs-6 text-muted mb-0">{note.author}</p> */}
         <Card.Text>{note.description}</Card.Text>
       </Card.Body>
     </Card>

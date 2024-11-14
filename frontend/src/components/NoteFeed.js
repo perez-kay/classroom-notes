@@ -19,7 +19,6 @@ function NoteFeed() {
         <Note
           key={note.id}
           id={note.id}
-          author={note.author}
           course={note.course}
           title={note.title}
           description={note.description}
