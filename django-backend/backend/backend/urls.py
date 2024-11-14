@@ -20,11 +20,13 @@ from rest_framework.routers import DefaultRouter
 from notes.views import NoteViewSet
 from students.views import StudentViewSet
 from subscriptions.views import SubscriptionViewSet
+from courses.views import CourseViewSet
 
 router = DefaultRouter()
 router.register(r'notes', NoteViewSet, basename='note')
 router.register(r'students', StudentViewSet, basename='student')
 router.register(r'subscriptions', SubscriptionViewSet, basename='subscription')
+router.register(r'courses', CourseViewSet, basename='course')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
