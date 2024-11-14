@@ -2,6 +2,13 @@
   background-color: #f9f9f9;
 }
 
-:global(.nav-link.active) {
+:global(a.active) {
   color: black;
+  background-color: #eeee;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+:global(nav a) {
+  text-decoration: none;
 }
