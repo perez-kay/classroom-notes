@@ -1,47 +1,33 @@
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Note from './components/Note';
-import axios from 'axios';
+import NoteFeed from './components/NoteFeed';
+import NavBar from './components/NavBar';
+import NoteDetails from './components/NoteDetails';
 
 function App() {
-  const [notes, setNotes] = useState([]);
-
-  useEffect(function () {
-    async function refreshNotes() {
-      const res = await axios.get('/api/notes');
-      setNotes(res.data);
-    }
-    refreshNotes();
-  }, []);
-
   return (
-    <Container>
-      <Row>
-        {notes.map((note) => (
-          <Note
-            author={note.author}
-            course={note.course}
-            title={note.title}
-            description={note.description}
-          />
-        ))}
-      </Row>
-    </Container>
+    <BrowserRouter>
+      <Container fluid>
+        <Row>
+          <Col xs={3} xl={2} className="p-0">
+            <NavBar />
+          </Col>
+          <Col>
+            <Row>
+              <Routes>
+                <Route path="/" element={<NoteFeed />} />
+                <Route path="/profile" element={<h1>Profile</h1>} />
+                <Route path="/my-notes" element={<h1>My Notes</h1>} />
+                <Route path="/notes/:id" element={<NoteDetails />} />
+              </Routes>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+    </BrowserRouter>
   );
 }
-
-// function Note({ author, course, instructor, lectureNum, notes }) {
-//   return (
-//     <div>
-//       <h1>Course: {course}</h1>
-//       <h3>Instructor: {instructor}</h3>
-//       <h4>Lecture {lectureNum}/11</h4>
-//       <h5>Notes Author: {author}</h5>
-//       <p>{notes}</p>
-//     </div>
-//   );
-// }
 
 export default App;
