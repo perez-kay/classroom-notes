@@ -6,6 +6,7 @@ import NoteFeed from './components/NoteFeed';
 import NavBar from './components/NavBar';
 import NoteDetails from './components/NoteDetails';
 import NewPost from './components/NewPost';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
@@ -16,15 +17,13 @@ function App() {
             <NavBar />
           </Col>
           <Col>
-            <Row>
-              <Routes>
-                <Route path="/" element={<NoteFeed />} />
-                <Route path="/profile" element={<h1>Profile</h1>} />
-                <Route path="/my-notes" element={<h1>My Notes</h1>} />
-                <Route path="/notes/:id" element={<NoteDetails />} />
-                <Route path="/new-post" element={<NewPost />} />
-              </Routes>
-            </Row>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/profile" element={<h1>Profile</h1>} />
+              <Route path="/my-notes" element={<NoteFeed />} />
+              <Route path="/notes/:id" element={<NoteDetails />} />
+              <Route path="/new-post" element={<NewPost />} />
+            </Routes>
           </Col>
         </Row>
       </Container>
