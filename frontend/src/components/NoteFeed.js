@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Note from './Note';
+import Row from 'react-bootstrap/Row';
 import axios from 'axios';
 
 function NoteFeed() {
@@ -13,8 +14,12 @@ function NoteFeed() {
     refreshNotes();
   }, []);
 
+  if (notes.length < 1) {
+    return <h1>You haven't written any notes yet!</h1>;
+  }
+
   return (
-    <>
+    <Row>
       {notes.map((note) => (
         <Note
           key={note.id}
@@ -24,7 +29,7 @@ function NoteFeed() {
           description={note.description}
         />
       ))}
-    </>
+    </Row>
   );
 }
 
