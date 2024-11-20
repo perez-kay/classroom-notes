@@ -29,7 +29,7 @@ router.register(r'subscriptions', SubscriptionViewSet, basename='subscription')
 router.register(r'courses', CourseViewSet, basename='course')
 
 urlpatterns = [
-	re_path(r'^api/notes/(?P<course>.+)/$', NotesForCourseList.as_view()),
     path('admin/', admin.site.urls),
 	path('api/', include(router.urls)),
+	re_path(r'^api/notes/course/(?P<course>.+)/$', NotesForCourseList.as_view()),
 ]
