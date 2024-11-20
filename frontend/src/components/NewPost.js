@@ -1,37 +1,21 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from './Spinner';
+import { useCourseContext } from '../context/CourseContext';
 
 function NewPost() {
-  const [courses, setCourses] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { courses, isLoadingCourses } = useCourseContext();
 
-  const [courseCode, setCourseCode] = useState('');
+  const [courseCode, setCourseCode] = useState(courses[0]?.code || '');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertType, setAlertType] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
-
-  useEffect(function () {
-    async function fetchCourses() {
-      setIsLoading(true);
-      try {
-        const res = await axios.get('/api/courses');
-        setCourses(res.data);
-        if (res.data.length > 0) setCourseCode(res.data[0].code);
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchCourses();
-  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -41,7 +25,7 @@ function NewPost() {
         title,
         description,
       });
-      /* TODO: Continue setting up alert for after a post */
+
       if (res.status === 201) {
         setAlertType('success');
         setAlertMessage('Note successfully uploaded!');
@@ -57,9 +41,9 @@ function NewPost() {
     }
   }
 
-  if (isLoading) return <Spinner />;
+  if (isLoadingCourses) return <Spinner />;
 
-  /* TODO: This flashes on screen for a sec before the spinner. It's going to be the same for the notes page too. Figure out how to fix it! */
+  /* TODO: Flashes for a sec before API loads. Make it not do that. */
   if (courses.length < 1)
     return <h1>You need to add a course before you can add any notes.</h1>;
 

@@ -8,18 +8,19 @@ import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.css';
 import { useAccordionButton } from 'react-bootstrap/esm/AccordionButton';
 import { useState } from 'react';
+import { useCourseContext } from '../context/CourseContext';
 
 function NavBar() {
+  const { courses } = useCourseContext();
+
   return (
     <nav className="position-sticky">
       <Nav
-        className={`${styles.sidebar}  m-0 px-1 flex-column vh-100`}
-        defaultActiveKey={'/'}
+        className="bg-light m-0 px-1 flex-column vh-100"
+        defaultActiveKey="/"
       >
-        <h1 className="text-center px-4 pt-4">Sharing Notes</h1>
+        <h1 className="text-center px-4 pt-4">EduNote</h1>
         <hr />
-
-        <SearchBar />
 
         <Nav.Item>
           <NavLink to="/" className="ps-3 py-2 d-block">
@@ -43,15 +44,17 @@ function NavBar() {
           <CoursesToggle eventKey="courses" />
           <Accordion.Collapse eventKey="courses">
             <div className="ps-4">
-              <Nav.Item>
-                <NavLink to="/courses/course1">Course 1</NavLink>
-              </Nav.Item>
-              <Nav.Item>
-                <NavLink to="/courses/course2">Course 2</NavLink>
-              </Nav.Item>
-              <Nav.Item>
-                <NavLink to="/courses/course3">Course 3</NavLink>
-              </Nav.Item>
+              {courses.map((course) => (
+                <Nav.Item key={course.code}>
+                  <NavLink
+                    className="d-inline-block p-2"
+                    to={`/courses/${course.code}`}
+                    key={course.code}
+                  >
+                    {course.code}
+                  </NavLink>
+                </Nav.Item>
+              ))}
             </div>
           </Accordion.Collapse>
         </Accordion>
