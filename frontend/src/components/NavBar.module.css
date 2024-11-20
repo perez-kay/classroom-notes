@@ -1,7 +1,3 @@
-.sidebar {
-  background-color: #f9f9f9;
-}
-
 :global(a.active) {
   color: black;
   background-color: #eeee;
