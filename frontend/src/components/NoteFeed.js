@@ -8,7 +8,7 @@ function NoteFeed() {
 
   useEffect(function () {
     async function refreshNotes() {
-      const res = await axios.get('/api/notes');
+      const res = await axios.get(`/api/notes/`);
       setNotes(res.data);
     }
     refreshNotes();
